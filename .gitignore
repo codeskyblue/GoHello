@@ -1,0 +1,12 @@
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+
+*syncthing*
+go_*
+app/src/main/java/go/
+app/src/golib/main.go
+app/libs/*

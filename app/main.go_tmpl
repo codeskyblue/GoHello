@@ -1,0 +1,12 @@
+// Go Entry file template
+// Generated from main.go_tmpl
+
+package main
+
+import "golang.org/x/mobile/app"
+import _ "golang.org/x/mobile/bind/java"
+// IMPORTFLAG
+
+func main(){
+	app.Run(app.Callbacks{})
+}
