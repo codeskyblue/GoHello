@@ -4,6 +4,10 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
 import go.Go;
 import go.hi.Hi;
 
@@ -16,6 +20,15 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         Go.init(getApplicationContext());
         Hi.Hello("World");
+
+        Button button = (Button)findViewById(R.id.btn_hello);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String message = Hi.Hello("World");
+                Toast.makeText(MainActivity.this, "Hello " + message, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
 

@@ -35,4 +35,5 @@ done
 echo "Building libgojni.go ..."
 CGO_ENABLED=1 GOOS=android GOARCH=arm GOARM=7 \
 	go build -ldflags="-shared" -o libs/armeabi-v7a/libgojni.so golib
-../gradlew build
+
+echo "Success, --- If you want build to apk, run: ../gradlew build"
