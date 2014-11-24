@@ -34,6 +34,6 @@ do
 done
 
 echo "Building libgojni.go ..."
-CC_FOR_TARGET=$NDK_ROOT/bin/arm-linux-androideabi-gcc CGO_ENABLED=1 GOOS=android GOARCH=arm GOARM=7 go build -ldflags="-shared" hello.go
+CC_FOR_TARGET=$NDK_ROOT/bin/arm-linux-androideabi-gcc CGO_ENABLED=1 GOOS=android GOARCH=arm GOARM=7 go build -ldflags="-shared" -o libs/armeabi-v7a/libgojni.so golib
 
 echo "Success, --- If you want build to apk, run: ../gradlew build"

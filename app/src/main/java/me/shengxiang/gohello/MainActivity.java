@@ -27,7 +27,7 @@ public class MainActivity extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String message = ""+Hi.RandInt();//Hi.Hello("World");
+                String message = "R:"+Hi.HttpGetTest();//Hi.Hello("World");
                 EditText text = (EditText)findViewById(R.id.text);
                 text.setText(message);
 //                Toast.makeText(MainActivity.this, "Random: " + message, Toast.LENGTH_LONG).show();

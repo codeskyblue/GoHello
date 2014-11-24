@@ -28,6 +28,7 @@ func RandInt() int {
 	return <-c
 }
 
+/*
 func MyIP() string {
 	resp, err := http.Get("http://ifconfig.mt.nie.netease.com/all.json")
 	if err != nil {
@@ -39,4 +40,18 @@ func MyIP() string {
 		return err.Error()
 	}
 	return string(body)
+}
+*/
+
+func HttpGetTest() string {
+	res, err := http.Get("http://www.zhihu.com/robots.txt")
+	if err != nil {
+		return err.Error()
+	}
+	robots, err := ioutil.ReadAll(res.Body)
+	res.Body.Close()
+	if err != nil {
+		return err.Error()
+	}
+	return string(robots)
 }
