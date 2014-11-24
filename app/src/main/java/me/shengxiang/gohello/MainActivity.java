@@ -6,6 +6,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import go.Go;
@@ -25,8 +27,10 @@ public class MainActivity extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String message = Hi.Hello("World");
-                Toast.makeText(MainActivity.this, "Hello " + message, Toast.LENGTH_LONG).show();
+                String message = ""+Hi.RandInt();//Hi.Hello("World");
+                EditText text = (EditText)findViewById(R.id.text);
+                text.setText(message);
+//                Toast.makeText(MainActivity.this, "Random: " + message, Toast.LENGTH_LONG).show();
             }
         });
     }

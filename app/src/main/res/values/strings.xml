@@ -4,5 +4,5 @@
     <string name="app_name">GoHello</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
+    <string name="title">随机数字生成器</string>
 </resources>
