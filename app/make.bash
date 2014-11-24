@@ -17,6 +17,7 @@ cp $MOBILE_ROOT/app/Go.java src/main/java/go
 cp $MOBILE_ROOT/bind/java/Seq.java src/main/java/go
 
 export GOPATH=$PWD:$GOPATH
+export CGO_ENABLED=1
 
 echo "Run gobind -> java,go ..."
 cp main.go_tmpl src/golib/main.go
@@ -26,14 +27,13 @@ do
 	mkdir -p src/main/java/go/$DIRNAME src/$GOLIBNAME
 	BINDJAVA=src/main/java/go/$DIRNAME/$(python -c "print '$DIRNAME'.title()").java
 	BINDGO=src/$GOLIBNAME/go_$DIRNAME.go
-	gobind -lang=java golib/$DIRNAME > $BINDJAVA
-	gobind -lang=go golib/$DIRNAME > $BINDGO
+	GOOS=android GOARCH=arm gobind -lang=java golib/$DIRNAME > $BINDJAVA
+	GOOS=android GOARCH=arm gobind -lang=go golib/$DIRNAME > $BINDGO
 
 	sed -i "/IMPORTFLAG/a import _ \"golib/$DIRNAME/go_$DIRNAME\"" src/golib/main.go
 done
 
 echo "Building libgojni.go ..."
-CGO_ENABLED=1 GOOS=android GOARCH=arm GOARM=7 \
-	go build -ldflags="-shared" -o libs/armeabi-v7a/libgojni.so golib
+CC_FOR_TARGET=$NDK_ROOT/bin/arm-linux-androideabi-gcc CGO_ENABLED=1 GOOS=android GOARCH=arm GOARM=7 go build -ldflags="-shared" hello.go
 
 echo "Success, --- If you want build to apk, run: ../gradlew build"
